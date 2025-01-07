@@ -1,3 +1,4 @@
+import '../assets/styles/_common.scss';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
