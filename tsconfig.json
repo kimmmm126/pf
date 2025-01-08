@@ -19,6 +19,11 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/assets/*": ["assets/*"],
+      "@/components/*": ["components/*"]
+    },
     "plugins": [{ "name": "next" }]
   },
   "include": ["./src", "./dist/types/**/*.ts", "./next-env.d.ts"],

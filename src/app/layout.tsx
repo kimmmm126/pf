@@ -1,10 +1,5 @@
-import '../assets/styles/_common.scss';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'My App',
-  description: 'My App is a...',
-};
+import 'xp.css/dist/98.css';
+import '@/assets/styles/_common.scss';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

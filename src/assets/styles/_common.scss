@@ -1,2 +1,69 @@
-@use '_variables.scss';
-@use '_font.scss';
+@import '_variable.scss';
+@import '_font.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-size: 14px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+span,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#root {
+  height: 100%;
+  min-height: 100vh;
+}
+.hid {
+  position: absolute;
+  display: none;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  background-color: $color-primary;
+}
+
+.iconWrap {
+  display: inline-block;
+  color: $color-white;
+  font-size: $h5;
+}
+
+.btnIcon {
+  background: none;
+  border: none;
+  box-shadow: none;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  &:not(:disabled).active,
+  &:not(:disabled):active,
+  &:focus {
+    outline: none;
+    outline-offset: 0;
+    box-shadow: none;
+  }
+}
+
+.icon {
+  margin: 10px;
+  text-align: center;
+}
