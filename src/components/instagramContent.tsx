@@ -36,6 +36,7 @@ const InstagramContent = () => {
   return (
     <>
       <h2 className="contentTitle">@kimmmm126</h2>
+      <div className="divider" />
       <div className="contentDiv">
         {profileImage ? (
           <div className="profile">
@@ -45,7 +46,6 @@ const InstagramContent = () => {
           <div className="noProfile">No Image</div>
         )}
       </div>
-      <div className="divider" />
       <div className="contentDiv">
         <div className="posts">
           <p className="count">{formatNumber(userData.posts)}</p>
