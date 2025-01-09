@@ -1,6 +1,17 @@
 @import '_variable.scss';
 @import '_font.scss';
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   padding: 0;
@@ -26,6 +37,13 @@ ul {
   list-style: none;
 }
 
+.divider {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #fcfcfc;
+  border-top: 1px solid #000;
+}
+
 #root {
   height: 100%;
   min-height: 100vh;
@@ -45,6 +63,10 @@ ul {
   display: inline-block;
   color: $color-white;
   font-size: $h5;
+  .icon {
+    margin: 10px;
+    text-align: center;
+  }
 }
 
 .btnIcon {
@@ -63,7 +85,57 @@ ul {
   }
 }
 
-.icon {
-  margin: 10px;
-  text-align: center;
+.title-bar {
+  align-items: center;
+}
+
+.title-bar-text {
+  display: flex;
+  align-items: center;
+  font-size: $h4;
+  color: $color-white;
+  margin-right: 0;
+  .icon {
+    margin-right: 0.5em;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &.sm {
+    width: $modal-sm;
+  }
+  &.md {
+    width: $modal-md;
+  }
+  &.lg {
+    width: $modal-lg;
+  }
+  .content {
+    &Title {
+      font-size: $h3;
+      text-align: center;
+      margin: 30px 0;
+    }
+  }
+}
+
+.contentDiv {
+  margin: 20px 0;
+}
+
+.profile {
+  width: 25%;
+  height: 25%;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 100px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
