@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import InstagramContent from "@/components/instagramContent";
-import Modal from "@/components/modal";
-import Link from "next/link";
-import { ReactNode, useState } from "react";
+import InstagramContent from '@/components/instagramContent';
+import Modal from '@/components/modal';
+import Link from 'next/link';
+import { ReactNode, useState } from 'react';
 
 interface infoDataProps {
   idx: number;
   name: string;
-  src: string;
+  src?: string;
   className?: string;
   content?: ReactNode;
 }
@@ -16,34 +16,30 @@ interface infoDataProps {
 const iconData: infoDataProps[] = [
   {
     idx: 1,
-    name: "My Coumputer",
-    className: "btnMy",
-    src: "http://via.placeholder.com/50x50",
+    name: 'My Coumputer',
+    className: 'btnMy',
   },
   {
     idx: 2,
-    name: "Recycle Bin",
-    className: "btnRecycle",
-    src: "http://via.placeholder.com/50x50",
+    name: 'Recycle Bin',
+    className: 'btnRecycle',
   },
   {
     idx: 3,
-    name: "Internet Explorer",
-    className: "btnInternet",
-    src: "http://via.placeholder.com/50x50",
+    name: 'Internet Explorer',
+    className: 'btnInternet',
   },
   {
     idx: 4,
-    name: "My Briefcase",
-    className: "btnBriefcase",
-    src: "http://via.placeholder.com/50x50",
+    name: 'My Briefcase',
+    className: 'btnBriefcase',
   },
   {
     idx: 5,
-    name: "Instagram.exe",
-    className: "btnInstagram",
+    name: 'Instagram.exe',
+    className: 'btnInstagram',
     content: <InstagramContent />,
-    src: "http://via.placeholder.com/50x50",
+    src: 'https://ibb.co/TK6YRNF',
   },
 ];
 
@@ -59,22 +55,20 @@ const Page = () => {
   };
   return (
     <>
-      <div className="wrap">
-        <div className="iconWrap">
+      <div className='wrap'>
+        <div className='iconWrap'>
           <ul>
             {iconData.map((data) => {
               return (
-                <li key={data.idx} className="icon">
+                <li key={data.idx} className='icon'>
                   <Link
-                    href="/"
-                    role="button"
-                    className={`btnIcon ${
-                      data.className ? data.className : ""
-                    }`}
+                    href='/'
+                    role='button'
+                    className={`btnIcon ${data.className ? data.className : ''}`}
                     onClick={() => onOpenPopup(data)}
                   >
                     {data.src && <img src={data.src} alt={data.name} />}
-                    {data.name && <p className="btnText">{data.name}</p>}
+                    {data.name && <p className='btnText'>{data.name}</p>}
                   </Link>
                 </li>
               );
@@ -82,11 +76,7 @@ const Page = () => {
           </ul>
         </div>
         {infoData && (
-          <Modal
-            closeClick={closeClick}
-            title={infoData.name}
-            src={infoData.src}
-          >
+          <Modal closeClick={closeClick} title={infoData.name} src={infoData.src}>
             {infoData.content}
           </Modal>
         )}

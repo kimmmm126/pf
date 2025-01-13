@@ -1,5 +1,5 @@
-@import "_variable.scss";
-@import "_font.scss";
+@import '_variable.scss';
+@import '_font.scss';
 
 h1,
 h2,
@@ -126,16 +126,32 @@ ul {
 }
 
 .contentDiv {
-  margin: 20px 0;
+  margin: 20px;
+}
+
+.contentTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profileWrap {
+  width: inherit;
+  margin-right: 5%;
+}
+
+.infoWrap {
+  width: 100%;
 }
 
 .profile {
   position: relative;
   width: 25%;
+  min-width: 100px;
   border-radius: 100%;
   overflow: hidden;
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     padding-bottom: 100%;
@@ -149,5 +165,74 @@ ul {
     object-fit: contain;
     border-radius: 50%;
     background-color: #fff;
+  }
+}
+
+.noImage {
+  width: 25%;
+  height: 100%;
+  min-width: 100px;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 100%;
+    background-color: #e0e0e0;
+  }
+}
+
+.countWrap {
+  display: flex;
+  align-items: center;
+  div {
+    flex: 3;
+  }
+  .count {
+    font-size: $h3;
+    font-weight: 700;
+  }
+  .text {
+    padding-top: 0.2em;
+    font-size: calc($h4 + 0.15em);
+  }
+}
+
+.btnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  .btnFollowed {
+    width: 100%;
+    min-height: 30px;
+    margin-right: 5%;
+  }
+  .btnArrow {
+    position: relative;
+    text-indent: -99999px;
+    min-width: 30px;
+    min-height: 30px;
+    // 화살표 아이콘
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 12px;
+      left: 10px;
+      border-top: 5px solid $color-black;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      transform: rotate(0);
+    }
+  }
+  .active {
+    &::after {
+      top: 8px;
+      transform: rotate(180deg);
+    }
   }
 }
