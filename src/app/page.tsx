@@ -1,9 +1,9 @@
 "use client";
+import { ReactNode, useState } from "react";
+import Link from "next/link";
 
 import InstagramContent from "@/components/instagramContent";
 import Modal from "@/components/modal";
-import Link from "next/link";
-import { ReactNode, useState } from "react";
 
 interface infoDataProps {
   idx: number;
@@ -90,11 +90,7 @@ const Page = () => {
           </ul>
         </div>
         {infoData?.visible && (
-          <Modal
-            closeClick={closeClick}
-            title={infoData.name}
-            src={infoData.src}
-          >
+          <Modal closeClick={closeClick} title={infoData.name} src={infoData.src}>
             {infoData.content}
           </Modal>
         )}

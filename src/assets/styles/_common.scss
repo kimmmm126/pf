@@ -1,5 +1,4 @@
 @import "_variable.scss";
-@import "_font.scss";
 
 h1,
 h2,
@@ -85,8 +84,7 @@ ul {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png")
-          left bottom / 32px no-repeat;
+        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png") left bottom / 32px no-repeat;
       }
     }
   }
@@ -232,7 +230,7 @@ ul {
   .btnFollowed {
     width: 100%;
     min-height: 30px;
-    margin-right: 5%;
+    margin-right: 2%;
   }
   .btnArrow {
     position: relative;
@@ -266,7 +264,7 @@ ul {
   width: 100%;
   margin-top: 20px;
   p {
-    font-size: $h3;
+    font-size: $h4;
     margin: 5px 0;
     &:last-child {
       margin-bottom: 0;
@@ -275,4 +273,8 @@ ul {
   .title {
     font-weight: 700;
   }
+}
+
+.menuWrap {
+  width: 100%;
 }
