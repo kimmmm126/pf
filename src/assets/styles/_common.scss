@@ -18,6 +18,7 @@ body {
   height: 100%;
   font-size: 14px;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -47,6 +48,7 @@ ul {
   height: 100%;
   min-height: 100vh;
 }
+
 .hid {
   position: absolute;
   display: none;
@@ -62,21 +64,26 @@ ul {
   display: inline-block;
   color: $color-white;
   font-size: $h5;
+
   .icon {
     margin: 10px;
     text-align: center;
   }
+
   .btn {
     display: inline-block;
+
     .btnImg {
       position: relative;
       width: 40px;
       height: 40px;
       margin: 10px auto;
+
       img {
         width: 100%;
         height: 100%;
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -84,8 +91,7 @@ ul {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png")
-          left bottom / 32px no-repeat;
+        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png") left bottom / 32px no-repeat;
       }
     }
   }
@@ -98,6 +104,7 @@ ul {
   min-width: 0;
   min-height: 0;
   padding: 0;
+
   &:not(:disabled).active,
   &:not(:disabled):active,
   &:focus {
@@ -117,6 +124,7 @@ ul {
   font-size: $h4;
   color: $color-white;
   margin-right: 0;
+
   .icon {
     width: 15px;
     height: 15px;
@@ -129,15 +137,19 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   &.sm {
     width: $modal-sm;
   }
+
   &.md {
     width: $modal-md;
   }
+
   &.lg {
     width: $modal-lg;
   }
+
   .content {
     &Title {
       font-size: $h3;
@@ -174,12 +186,14 @@ ul {
   min-width: 100px;
   border-radius: 100%;
   overflow: hidden;
+
   &::after {
     content: "";
     display: block;
     width: 100%;
     padding-bottom: 100%;
   }
+
   img {
     position: absolute;
     top: 0;
@@ -210,13 +224,16 @@ ul {
 .countDiv {
   display: flex;
   align-items: center;
+
   div {
     flex: 3;
   }
+
   .count {
     font-size: $h3;
     font-weight: 700;
   }
+
   .text {
     padding-top: 0.2em;
     font-size: calc($h4 + 0.15em);
@@ -228,16 +245,19 @@ ul {
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
+
   .btnFollowed {
     width: 100%;
     min-height: 30px;
     margin-right: 2%;
   }
+
   .btnArrow {
     position: relative;
     text-indent: -99999px;
     min-width: 30px;
     min-height: 30px;
+
     // 화살표 아이콘
     &::after {
       content: "";
@@ -253,6 +273,7 @@ ul {
       transform: rotate(0);
     }
   }
+
   .isActive {
     &::after {
       top: 8px;
@@ -264,13 +285,16 @@ ul {
 .messageWrap {
   width: 100%;
   margin-top: 20px;
+
   p {
     font-size: $h4;
     margin: 5px 0;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   .title {
     font-weight: 700;
   }
@@ -280,19 +304,27 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .btn {
     width: 25%;
   }
+}
+
+.itemWrap {
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 10px 0;
 }
 
 .imgDiv {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin: 10px 0;
+
   .img {
     position: relative;
     width: 33.3%;
+
     img {
       position: absolute;
       top: 0;
@@ -301,6 +333,7 @@ ul {
       height: 100%;
       object-fit: cover;
     }
+
     &::after {
       content: "";
       display: block;
