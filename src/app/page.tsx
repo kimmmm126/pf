@@ -5,7 +5,7 @@ import Link from "next/link";
 import InstagramContent from "@/components/instagramContent";
 import Modal from "@/components/modal";
 
-interface infoDataProps {
+interface IInfoData {
   idx: number;
   name: string;
   src?: string;
@@ -14,7 +14,7 @@ interface infoDataProps {
   content?: ReactNode;
 }
 
-const iconData: infoDataProps[] = [
+const INFO_DATA: IInfoData[] = [
   {
     idx: 1,
     name: "My Coumputer",
@@ -54,9 +54,9 @@ const iconData: infoDataProps[] = [
 ];
 
 const Page = () => {
-  const [infoData, setInfoData] = useState<infoDataProps>();
+  const [infoData, setInfoData] = useState<IInfoData>();
 
-  const onOpenPopup = (data: infoDataProps) => {
+  const onOpenPopup = (data: IInfoData) => {
     setInfoData(data);
   };
 
@@ -68,11 +68,11 @@ const Page = () => {
       <div className="wrap">
         <div className="iconWrap">
           <ul>
-            {iconData.map((data) => {
+            {INFO_DATA.map((data) => {
               return (
                 <li key={data.idx} className="icon">
                   <Link
-                    href="/"
+                    href="#"
                     role="button"
                     className={`btn ${data.className ? data.className : ""}`}
                     onClick={() => onOpenPopup(data)}
@@ -90,7 +90,11 @@ const Page = () => {
           </ul>
         </div>
         {infoData?.visible && (
-          <Modal closeClick={closeClick} title={infoData.name} src={infoData.src}>
+          <Modal
+            closeClick={closeClick}
+            title={infoData.name}
+            src={infoData.src}
+          >
             {infoData.content}
           </Modal>
         )}

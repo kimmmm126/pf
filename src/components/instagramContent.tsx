@@ -1,30 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useState } from "react";
+import GridImgView from "@/components/gridImgView";
 
-interface UserCountData {
+interface IUserData {
   posts: number;
   followers: number;
   following: number;
 }
 
-interface MenuData {
+interface IContentData {
   idx: number;
   name?: string;
   className?: string;
+  content?: ReactNode;
 }
 
-const userData: UserCountData = {
+const USER_DATA: IUserData = {
   posts: 60,
   followers: 11100,
   following: 569,
 };
 
-const menus: MenuData[] = [
+const CONTENT_DATA: IContentData[] = [
   {
     idx: 1,
     name: "total grid",
     className: "btnTotalGrid",
+    content: <GridImgView />,
   },
   {
     idx: 2,
@@ -48,28 +51,27 @@ const menus: MenuData[] = [
   },
   {
     idx: 6,
-    name: "search",
-    className: "btnSearch",
-  },
-  {
-    idx: 7,
     name: "photo",
     className: "btnPhoto",
   },
   {
-    idx: 8,
+    idx: 7,
     name: "to like",
     className: "btnLike",
+  },
+  {
+    idx: 8,
+    name: "speach",
+    className: "btnSpeach",
   },
 ];
 
 const InstagramContent = () => {
-  // const [profileImage, setProfileImage] = useState<string>(
-  //   "https://i.pinimg.com/736x/cf/01/80/cf018054a17ca7d56a91345cca92d7d8.jpg"
-  // );
-
-  const profileImage = "https://i.pinimg.com/736x/cf/01/80/cf018054a17ca7d56a91345cca92d7d8.jpg";
+  const [profileImage, setProfileImage] = useState<string>(
+    "https://i.pinimg.com/736x/cf/01/80/cf018054a17ca7d56a91345cca92d7d8.jpg"
+  );
   const [isActive, setIsActive] = useState(false);
+  const [contentData, setContentData] = useState<IContentData>();
 
   const formatNumber = (number: number) => {
     return number.toLocaleString("en-US", {
@@ -81,6 +83,11 @@ const InstagramContent = () => {
 
   const onDropDown = () => {
     setIsActive(!isActive);
+  };
+
+  // 사용자 메뉴 클릭 이벤트 핸들러
+  const onClickMenu = (menu: IContentData) => {
+    setContentData(menu); // 선택된 메뉴가 담김
   };
 
   return (
@@ -102,21 +109,24 @@ const InstagramContent = () => {
         <div className="infoWrap">
           <div className="countDiv">
             <div className="posts">
-              <p className="count">{formatNumber(userData.posts)}</p>
+              <p className="count">{formatNumber(USER_DATA.posts)}</p>
               <p className="text">Posts</p>
             </div>
             <div className="followers">
-              <p className="count">{formatNumber(userData.followers)}</p>
+              <p className="count">{formatNumber(USER_DATA.followers)}</p>
               <p className="text">Followers</p>
             </div>
             <div className="following">
-              <p className="count">{formatNumber(userData.following)}</p>
+              <p className="count">{formatNumber(USER_DATA.following)}</p>
               <p className="text">Following</p>
             </div>
           </div>
           <div className="btnDiv">
             <button className="btnFollowed">+ Following</button>
-            <button onClick={onDropDown} className={isActive ? "btnArrow isActive" : "btnArrow"}>
+            <button
+              onClick={onDropDown}
+              className={isActive ? "btnArrow isActive" : "btnArrow"}
+            >
               <span>Arrow</span>
             </button>
           </div>
@@ -132,23 +142,27 @@ const InstagramContent = () => {
       <div className="divider" />
       <div className="contentBottom">
         <div className="menuWrap menuTop">
-          {menus
-            .filter((item) => item.idx <= 4)
-            .map((item) => (
-              <button key={item.idx} className={`btn ` + item.className}>
-                {item.name}
-              </button>
-            ))}
+          {CONTENT_DATA.slice(0, 4).map((item) => (
+            <button
+              key={item.idx}
+              className={`btn ` + item.className}
+              onClick={() => onClickMenu(item)}
+            >
+              {item.name}
+            </button>
+          ))}
         </div>
-        <div className="itemWrap"></div>
+        <div className="itemWrap">{contentData?.content}</div>
         <div className="menuWrap menuBottom">
-          {menus
-            .filter((item) => item.idx > 4)
-            .map((item) => (
-              <button key={item.idx} className={`btn ` + item.className}>
-                {item.name}
-              </button>
-            ))}
+          {CONTENT_DATA.slice(4, 8).map((item) => (
+            <button
+              key={item.idx}
+              className={`btn ` + item.className}
+              onClick={() => onClickMenu(item)}
+            >
+              {item.name}
+            </button>
+          ))}
         </div>
       </div>
     </>

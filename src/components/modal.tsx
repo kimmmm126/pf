@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 
-interface ModalProps {
+interface IModalProps {
   closeClick: () => void;
   title: string;
   children?: ReactNode;
   src?: string;
 }
 
-const Modal = ({ closeClick, title, children, src }: ModalProps) => {
+const Modal = ({ closeClick, title, children, src }: IModalProps) => {
   return (
     <div className="window modal md">
       <div className="title-bar">

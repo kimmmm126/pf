@@ -1,4 +1,5 @@
 {
+  "homepage": "https://kimmmm126.github.io/pf/",
   "name": "pf",
   "private": true,
   "version": "0.0.0",
@@ -6,9 +7,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "next": "^15.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
