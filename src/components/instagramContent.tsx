@@ -68,10 +68,10 @@ const CONTENT_DATA: IContentData[] = [
 
 const InstagramContent = () => {
   const [profileImage, setProfileImage] = useState<string>(
-    "https://i.pinimg.com/736x/cf/01/80/cf018054a17ca7d56a91345cca92d7d8.jpg"
+    "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg"
   );
   const [isActive, setIsActive] = useState(false);
-  const [contentData, setContentData] = useState<IContentData>();
+  const [contentData, setContentData] = useState<IContentData>(CONTENT_DATA[0]);
 
   const formatNumber = (number: number) => {
     return number.toLocaleString("en-US", {
@@ -123,10 +123,7 @@ const InstagramContent = () => {
           </div>
           <div className="btnDiv">
             <button className="btnFollowed">+ Following</button>
-            <button
-              onClick={onDropDown}
-              className={isActive ? "btnArrow isActive" : "btnArrow"}
-            >
+            <button onClick={onDropDown} className={isActive ? "btnArrow isActive" : "btnArrow"}>
               <span>Arrow</span>
             </button>
           </div>
@@ -143,23 +140,23 @@ const InstagramContent = () => {
       <div className="contentBottom">
         <div className="menuWrap menuTop">
           {CONTENT_DATA.slice(0, 4).map((item) => (
-            <button
-              key={item.idx}
-              className={`btn ` + item.className}
-              onClick={() => onClickMenu(item)}
-            >
+            <button key={item.idx} className={`btn ` + item.className} onClick={() => onClickMenu(item)}>
               {item.name}
             </button>
           ))}
         </div>
-        <div className="itemWrap">{contentData?.content}</div>
+        <div className="itemWrap">
+          {contentData.content ? (
+            contentData.content
+          ) : (
+            <div className="noContent">
+              <p className="text">내용이 없습니다.</p>
+            </div>
+          )}
+        </div>
         <div className="menuWrap menuBottom">
           {CONTENT_DATA.slice(4, 8).map((item) => (
-            <button
-              key={item.idx}
-              className={`btn ` + item.className}
-              onClick={() => onClickMenu(item)}
-            >
+            <button key={item.idx} className={`btn ` + item.className} onClick={() => onClickMenu(item)}>
               {item.name}
             </button>
           ))}

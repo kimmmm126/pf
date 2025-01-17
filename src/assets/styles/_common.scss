@@ -304,6 +304,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px 0;
 
   .btn {
     width: 25%;
@@ -339,5 +340,16 @@ ul {
       display: block;
       padding-bottom: 100%;
     }
+  }
+}
+
+.noContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+
+  .text {
+    text-align: center;
   }
 }
