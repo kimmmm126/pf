@@ -49,7 +49,7 @@ const INFO_DATA: IInfoData[] = [
     className: "btnInstagram",
     visible: true,
     content: <InstagramContent />,
-    src: "https://i.ibb.co/dbFj6Hz/ico-instagram.png",
+    src: "https://i.ibb.co/BLFfy5X/ico-instagram.png",
   },
 ];
 
@@ -90,11 +90,7 @@ const Page = () => {
           </ul>
         </div>
         {infoData?.visible && (
-          <Modal
-            closeClick={closeClick}
-            title={infoData.name}
-            src={infoData.src}
-          >
+          <Modal closeClick={closeClick} title={infoData.name} src={infoData.src} classNames="md">
             {infoData.content}
           </Modal>
         )}

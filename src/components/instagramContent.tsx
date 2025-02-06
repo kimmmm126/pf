@@ -1,8 +1,15 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import GridImgView from "@/components/gridImgView";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+
+import GridImgView from "@/components/gridImgView";
+import Modal from "@/components/modal";
 interface IUserData {
   posts: number;
   followers: number;
@@ -14,6 +21,13 @@ interface IContentData {
   name?: string;
   className?: string;
   content?: ReactNode;
+}
+
+interface IFollowersData {
+  idx: number;
+  name: string;
+  src?: string;
+  comment?: string;
 }
 
 const USER_DATA: IUserData = {
@@ -66,12 +80,42 @@ const CONTENT_DATA: IContentData[] = [
   },
 ];
 
+const FOLLOWERS_DATA: IFollowersData[] = [
+  {
+    idx: 1,
+    name: "이주연",
+    comment: "작업하기 편했다",
+  },
+  {
+    idx: 2,
+    name: "김영훈",
+  },
+  {
+    idx: 3,
+    name: "이상연",
+  },
+  {
+    idx: 4,
+    name: "지창민",
+  },
+  {
+    idx: 5,
+    name: "김선우",
+  },
+  {
+    idx: 6,
+    name: "최찬희",
+  },
+];
+
 const InstagramContent = () => {
-  const [profileImage, setProfileImage] = useState<string>(
-    "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg"
-  );
+  // const [profileImage, setProfileImage] = useState<string>(
+  //   "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg"
+  // );
+  const profileImage = "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg";
   const [isActive, setIsActive] = useState(false);
   const [contentData, setContentData] = useState<IContentData>(CONTENT_DATA[0]);
+  const [followersData, setFollowersData] = useState<IFollowersData[]>(FOLLOWERS_DATA);
 
   const formatNumber = (number: number) => {
     return number.toLocaleString("en-US", {
@@ -88,6 +132,19 @@ const InstagramContent = () => {
   // 사용자 메뉴 클릭 이벤트 핸들러
   const onClickMenu = (menu: IContentData) => {
     setContentData(menu); // 선택된 메뉴가 담김
+  };
+
+  // 팔로워 슬라이드 모달 팝업 닫기
+  const onCloseClick = (idx: number) => {
+    setFollowersData(followersData.filter((item) => item.idx !== idx));
+  };
+
+  // 팔로워 슬라이드 파라미터
+  const params = {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    freeMode: true,
+    modules: [FreeMode],
   };
 
   return (
@@ -128,6 +185,25 @@ const InstagramContent = () => {
             </button>
           </div>
         </div>
+        {isActive && (
+          <div className="infoSlideWrap">
+            <Swiper {...params}>
+              {followersData.map(({ idx, name, comment }: IFollowersData) => (
+                <SwiperSlide key={idx}>
+                  <Modal classNames="followersModal" title="" closeClick={() => onCloseClick(idx)}>
+                    <div className="profile">
+                      <img src="https://placehold.co/300x300" alt="" />
+                    </div>
+                    <div className="txt">
+                      <strong className="tit">{name}</strong>
+                      <p className="comment">{comment}</p>
+                    </div>
+                  </Modal>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
         <div className="messageWrap">
           <p className="title">@kimmmm126</p>
           <a className="github">
@@ -156,7 +232,7 @@ const InstagramContent = () => {
         </div>
         <div className="menuWrap menuBottom">
           {CONTENT_DATA.slice(4, 8).map((item) => (
-            <button key={item.idx} className={`btn ` + item.className} onClick={() => onClickMenu(item)}>
+            <button key={item.idx} className={`btn ${item.className}`} onClick={() => onClickMenu(item)}>
               {item.name}
             </button>
           ))}

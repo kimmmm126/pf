@@ -5,14 +5,15 @@ interface IModalProps {
   title: string;
   children?: ReactNode;
   src?: string;
+  classNames?: any;
 }
 
-const Modal = ({ closeClick, title, children, src }: IModalProps) => {
+const Modal = ({ closeClick, title, children, src, classNames }: IModalProps) => {
   return (
-    <div className="window modal md">
+    <div className={`window modal ${classNames}`}>
       <div className="title-bar">
         <div className="title-bar-text">
-          <img className="icon" src={src} alt="" />
+          {src && <img className="icon" src={src} alt="" />}
           <h2 className="title">{title}</h2>
         </div>
         <div className="title-bar-controls">
