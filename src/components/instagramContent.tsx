@@ -190,7 +190,7 @@ const InstagramContent = () => {
             <Swiper {...params}>
               {followersData.map(({ idx, name, comment }: IFollowersData) => (
                 <SwiperSlide key={idx}>
-                  <Modal classNames="followersModal" title="" closeClick={() => onCloseClick(idx)}>
+                  <Modal classNames="followersModal" closeClick={() => onCloseClick(idx)}>
                     <div className="profile">
                       <img src="https://placehold.co/300x300" alt="" />
                     </div>
@@ -209,7 +209,7 @@ const InstagramContent = () => {
           <a className="github">
             <p>https://kimmmm126.github.com/pf</p>
           </a>
-          <p className="e-mail">kimmmm126@gmail.com</p>
+          <p className="e-mail">qwert850919@gmail.com</p>
         </div>
       </div>
       <div className="divider" />

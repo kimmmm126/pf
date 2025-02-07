@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface IModalProps {
   closeClick: () => void;
-  title: string;
+  title?: string;
   children?: ReactNode;
   src?: string;
   classNames?: any;
