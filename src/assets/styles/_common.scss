@@ -179,7 +179,6 @@ ul {
 .followersModal {
   position: static;
   transform: none;
-  width: 100%;
 
   .profile {
     width: 100%;
@@ -189,6 +188,13 @@ ul {
   .txt {
     text-align: center;
     margin-top: $h2;
+  }
+
+  .comment {
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -202,11 +208,22 @@ ul {
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
+
 }
 
 .profileWrap {
   width: inherit;
   margin-right: 5%;
+
+  .profile {
+    width: 25%;
+    min-width: 100px;
+  }
+
+  .noImage {
+    width: 25%;
+    min-width: 100px;
+  }
 }
 
 .infoWrap {
@@ -215,8 +232,6 @@ ul {
 
 .profile {
   position: relative;
-  width: 25%;
-  min-width: 100px;
   border-radius: 100%;
   overflow: hidden;
 
@@ -240,9 +255,7 @@ ul {
 }
 
 .noImage {
-  width: 25%;
   height: 100%;
-  min-width: 100px;
 
   &::after {
     content: "";
@@ -269,7 +282,7 @@ ul {
 
   .text {
     padding-top: 0.2em;
-    font-size: calc($h4 + 0.15em);
+    font-size: $h4;
   }
 }
 

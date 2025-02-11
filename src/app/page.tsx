@@ -49,7 +49,7 @@ const INFO_DATA: IInfoData[] = [
     className: "btnInstagram",
     visible: true,
     content: <InstagramContent />,
-    src: "https://i.ibb.co/BLFfy5X/ico-instagram.png",
+    src: "https://i.postimg.cc/SQVkxztW/ico-instagram.png",
   },
 ];
 

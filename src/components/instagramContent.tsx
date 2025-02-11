@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useRef } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
@@ -97,6 +97,7 @@ const FOLLOWERS_DATA: IFollowersData[] = [
   {
     idx: 4,
     name: "지창민",
+    comment: "기획의 의도대로 작업을 해주었다",
   },
   {
     idx: 5,
@@ -116,9 +117,10 @@ const InstagramContent = () => {
   const [isActive, setIsActive] = useState(false);
   const [contentData, setContentData] = useState<IContentData>(CONTENT_DATA[0]);
   const [followersData, setFollowersData] = useState<IFollowersData[]>(FOLLOWERS_DATA);
+  const contentHeightRef = useRef<HTMLDivElement | null>(null);
 
-  const formatNumber = (number: number) => {
-    return number.toLocaleString("en-US", {
+  const formatNumber = (n: number) => {
+    return n.toLocaleString("en-US", {
       maximumFractionDigits: 2,
       notation: "compact",
       compactDisplay: "short",
@@ -142,7 +144,7 @@ const InstagramContent = () => {
   // 팔로워 슬라이드 파라미터
   const params = {
     slidesPerView: 3,
-    spaceBetween: 20,
+    spaceBetween: 15,
     freeMode: true,
     modules: [FreeMode],
   };
@@ -185,15 +187,22 @@ const InstagramContent = () => {
             </button>
           </div>
         </div>
-        {isActive && (
+
+        {isActive && followersData.length > 0 && (
           <div className="infoSlideWrap">
             <Swiper {...params}>
-              {followersData.map(({ idx, name, comment }: IFollowersData) => (
+              {followersData.map(({ idx, src, name, comment }: IFollowersData) => (
                 <SwiperSlide key={idx}>
                   <Modal classNames="followersModal" closeClick={() => onCloseClick(idx)}>
-                    <div className="profile">
-                      <img src="https://placehold.co/300x300" alt="" />
-                    </div>
+                    {src ? (
+                      <div className="profile">
+                        <img src={src} alt={name} />
+                      </div>
+                    ) : (
+                      <div className="noImage">
+                        <span className="hid">No Image</span>
+                      </div>
+                    )}
                     <div className="txt">
                       <strong className="tit">{name}</strong>
                       <p className="comment">{comment}</p>
@@ -206,7 +215,7 @@ const InstagramContent = () => {
         )}
         <div className="messageWrap">
           <p className="title">@kimmmm126</p>
-          <a className="github">
+          <a className="github" title="깃헙 주소">
             <p>https://kimmmm126.github.com/pf</p>
           </a>
           <p className="e-mail">qwert850919@gmail.com</p>
@@ -221,11 +230,11 @@ const InstagramContent = () => {
             </button>
           ))}
         </div>
-        <div className="itemWrap">
+        <div className="itemWrap" ref={contentHeightRef}>
           {contentData.content ? (
             contentData.content
           ) : (
-            <div className="noContent">
+            <div className="noContent" style={{ height: contentHeightRef.current?.clientHeight }}>
               <p className="text">내용이 없습니다.</p>
             </div>
           )}
