@@ -68,15 +68,16 @@ const CONTENT_DATA: IContentData[] = [
     name: "photo",
     className: "btnPhoto",
   },
+
   {
     idx: 7,
-    name: "to like",
-    className: "btnLike",
+    name: "speach",
+    className: "btnSpeach",
   },
   {
     idx: 8,
-    name: "speach",
-    className: "btnSpeach",
+    name: "to like",
+    className: "btnLike",
   },
 ];
 
@@ -182,12 +183,15 @@ const InstagramContent = () => {
           </div>
           <div className="btnDiv">
             <button className="btnFollowed">+ Following</button>
-            <button onClick={onDropDown} className={isActive ? "btnArrow isActive" : "btnArrow"}>
+            <button
+              onClick={onDropDown}
+              className={isActive ? "btnArrow isActive" : "btnArrow"}
+              disabled={followersData.length == 0 ? true : false}
+            >
               <span>Arrow</span>
             </button>
           </div>
         </div>
-
         {isActive && followersData.length > 0 && (
           <div className="infoSlideWrap">
             <Swiper {...params}>
@@ -215,9 +219,11 @@ const InstagramContent = () => {
         )}
         <div className="messageWrap">
           <p className="title">@kimmmm126</p>
-          <a className="github" title="깃헙 주소">
-            <p>https://kimmmm126.github.com/pf</p>
-          </a>
+          <p className="github">
+            <a href="https://github.com/kimmmm126/pf" target="_blank">
+              https://github.com/kimmmm126/pf
+            </a>
+          </p>
           <p className="e-mail">qwert850919@gmail.com</p>
         </div>
       </div>

@@ -208,7 +208,6 @@ ul {
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
-
 }
 
 .profileWrap {
@@ -334,11 +333,9 @@ ul {
 
   p {
     font-size: $h4;
-    margin-bottom: 5px;
-
-
-    &:last-child {
-      margin-bottom: 0;
+    display: block;
+    & + p {
+      margin-top: 5px;
     }
   }
 
@@ -355,6 +352,36 @@ ul {
 
   .btn {
     width: 25%;
+    min-height: 35px;
+    font-size: 0;
+    text-indent: -99999px;
+    &TotalGrid {
+      background: url("../images/ico-total-grid.png") no-repeat center / auto 12px;
+    }
+    &TotalList {
+      background: url("../images/ico-total-List.jpg") no-repeat center / auto 12px;
+    }
+    &ContactUs {
+      background: url("../images/ico-contact-us.jpg") no-repeat center / auto 16px;
+    }
+    &Visitor {
+      background: url("../images/ico-visitor.jpg") no-repeat center / auto 16px;
+    }
+    &Home {
+      background: url("../images/ico-home.jpg") no-repeat center / auto 20px;
+    }
+    &Photo {
+      background: url("../images/ico-photo.jpg") no-repeat center / auto 20px;
+    }
+    &Speach {
+      background: url("../images/ico-speach.png") no-repeat center / auto 20px;
+    }
+    &Like {
+      background: url("../images/ico-like.jpg") no-repeat center / auto 20px;
+    }
+  }
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

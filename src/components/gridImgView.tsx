@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Modal from "./modal";
+
 interface IItemList {
   idx: number;
   name: string;
@@ -53,14 +56,21 @@ const imgList: IItemList[] = [
 ];
 
 const GridImgView = () => {
+  const [imgIdx, setImgIdx] = useState<IItemList[]>(imgList);
+  const onClickImg = (menu: IItemList[]) => {
+    setImgIdx(menu);
+  };
+
   return (
-    <ul className="imgDiv">
-      {imgList.map((item) => (
-        <li key={item.idx} className="img">
-          <img src={item.src} alt={item.name} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="imgDiv">
+        {imgList.map((item: IItemList) => (
+          <li onClick={() => onClickImg(item)} key={item.idx} className="img">
+            <img src={item.src} alt={item.name} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
