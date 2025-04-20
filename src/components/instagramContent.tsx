@@ -8,7 +8,7 @@ import { FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import GridImgView from "@/components/gridImgView";
+import GridItemView from "@/components/gridItemView";
 import Modal from "@/components/modal";
 interface IUserData {
   posts: number;
@@ -41,7 +41,7 @@ const CONTENT_DATA: IContentData[] = [
     idx: 1,
     name: "total grid",
     className: "btnTotalGrid",
-    content: <GridImgView />,
+    content: <GridItemView />,
   },
   {
     idx: 2,
@@ -114,10 +114,12 @@ const InstagramContent = () => {
   // const [profileImage, setProfileImage] = useState<string>(
   //   "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg"
   // );
-  const profileImage = "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg";
+  const profileImage =
+    "https://i.pinimg.com/736x/28/47/c7/2847c7f42e7f0d992242183bf0fa3ee5.jpg";
   const [isActive, setIsActive] = useState(false);
   const [contentData, setContentData] = useState<IContentData>(CONTENT_DATA[0]);
-  const [followersData, setFollowersData] = useState<IFollowersData[]>(FOLLOWERS_DATA);
+  const [followersData, setFollowersData] =
+    useState<IFollowersData[]>(FOLLOWERS_DATA);
   const contentHeightRef = useRef<HTMLDivElement | null>(null);
 
   const formatNumber = (n: number) => {
@@ -195,25 +197,30 @@ const InstagramContent = () => {
         {isActive && followersData.length > 0 && (
           <div className="infoSlideWrap">
             <Swiper {...params}>
-              {followersData.map(({ idx, src, name, comment }: IFollowersData) => (
-                <SwiperSlide key={idx}>
-                  <Modal classNames="followersModal" closeClick={() => onCloseClick(idx)}>
-                    {src ? (
-                      <div className="profile">
-                        <img src={src} alt={name} />
+              {followersData.map(
+                ({ idx, src, name, comment }: IFollowersData) => (
+                  <SwiperSlide key={idx}>
+                    <Modal
+                      classNames="followersModal"
+                      closeClick={() => onCloseClick(idx)}
+                    >
+                      {src ? (
+                        <div className="profile">
+                          <img src={src} alt={name} />
+                        </div>
+                      ) : (
+                        <div className="noImage">
+                          <span className="hid">No Image</span>
+                        </div>
+                      )}
+                      <div className="txt">
+                        <strong className="tit">{name}</strong>
+                        <p className="comment">{comment}</p>
                       </div>
-                    ) : (
-                      <div className="noImage">
-                        <span className="hid">No Image</span>
-                      </div>
-                    )}
-                    <div className="txt">
-                      <strong className="tit">{name}</strong>
-                      <p className="comment">{comment}</p>
-                    </div>
-                  </Modal>
-                </SwiperSlide>
-              ))}
+                    </Modal>
+                  </SwiperSlide>
+                )
+              )}
             </Swiper>
           </div>
         )}
@@ -231,7 +238,11 @@ const InstagramContent = () => {
       <div className="contentBottom">
         <div className="menuWrap menuTop">
           {CONTENT_DATA.slice(0, 4).map((item) => (
-            <button key={item.idx} className={`btn ` + item.className} onClick={() => onClickMenu(item)}>
+            <button
+              key={item.idx}
+              className={`btn ` + item.className}
+              onClick={() => onClickMenu(item)}
+            >
               {item.name}
             </button>
           ))}
@@ -240,14 +251,21 @@ const InstagramContent = () => {
           {contentData.content ? (
             contentData.content
           ) : (
-            <div className="noContent" style={{ height: contentHeightRef.current?.clientHeight }}>
+            <div
+              className="noContent"
+              style={{ height: contentHeightRef.current?.clientHeight }}
+            >
               <p className="text">내용이 없습니다.</p>
             </div>
           )}
         </div>
         <div className="menuWrap menuBottom">
           {CONTENT_DATA.slice(4, 8).map((item) => (
-            <button key={item.idx} className={`btn ${item.className}`} onClick={() => onClickMenu(item)}>
+            <button
+              key={item.idx}
+              className={`btn ${item.className}`}
+              onClick={() => onClickMenu(item)}
+            >
               {item.name}
             </button>
           ))}
