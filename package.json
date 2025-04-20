@@ -6,10 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
+    "build": "next build && touch out/.nojekyll && gh-pages -d out --dotfiles",
+    "start": "next start"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",

@@ -19,7 +19,7 @@ const Modal = ({
     <div className={`window modal ${classNames}`}>
       <div className="title-bar">
         <div className="title-bar-text">
-          {src && <img className="icon" src={src} alt="" />}
+          {src && <img className="icon" src={src} alt={title} />}
           <h2 className="title">{title}</h2>
         </div>
         <div className="title-bar-controls">
