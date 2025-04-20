@@ -5,10 +5,16 @@ interface IModalProps {
   title?: string;
   children?: ReactNode;
   src?: string;
-  classNames?: any;
+  classNames?: string;
 }
 
-const Modal = ({ closeClick, title, children, src, classNames }: IModalProps) => {
+const Modal = ({
+  closeClick,
+  title,
+  children,
+  src,
+  classNames,
+}: IModalProps) => {
   return (
     <div className={`window modal ${classNames}`}>
       <div className="title-bar">
