@@ -56,9 +56,9 @@ const imgList: IItemList[] = [
 ];
 
 const GridImgView = () => {
-  const [imgIdx, setImgIdx] = useState<IItemList[]>(imgList);
-  const onClickImg = (menu: IItemList[]) => {
-    setImgIdx(menu);
+  const [selectedImg, setSelectedImg] = useState<IItemList | null>(null);
+  const onClickImg = (menu: IItemList) => {
+    setSelectedImg(menu);
   };
 
   return (
@@ -70,6 +70,11 @@ const GridImgView = () => {
           </li>
         ))}
       </ul>
+      {selectedImg && (
+        <Modal closeClick={() => setSelectedImg(null)}>
+          <img src={selectedImg.src} alt={selectedImg.name} />
+        </Modal>
+      )}
     </>
   );
 };
