@@ -1,201 +1,54 @@
-@import "_variable.scss", "_layout.scss", "_animation.scss";
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  min-width: $xl;
-  background-color: $color-primary;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
+.wrap {
   width: 100%;
   height: 100%;
-  font-size: 14px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-span,
-p {
-  padding: 0;
-  margin: 0;
-}
-
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.divider {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px solid #fcfcfc;
-  border-top: 1px solid #000;
-}
-
-#root {
-  height: 100%;
-  min-height: 100vh;
-}
-
-.hid {
-  position: absolute;
-  display: none;
-}
-
-// 말줄임
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  &-2line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-  &-3line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-}
-
-.btn {
-  &:disabled {
-    &::after {
-      opacity: 0.1;
-    }
-  }
-}
-
-.iconWrap {
-  display: inline-block;
-  color: $color-white;
-  font-size: $h5;
-
-  .icon {
-    margin: 10px;
-    text-align: center;
-  }
-
-  .btn {
-    display: inline-block;
-
-    .btnImg {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      margin: 10px auto;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png") left bottom / 32px no-repeat;
-      }
-    }
-  }
-}
-
-.btnIcon {
-  background: none;
-  border: none;
-  box-shadow: none;
-  min-width: 0;
-  min-height: 0;
-  padding: 0;
-
-  &:not(:disabled).active,
-  &:not(:disabled):active,
-  &:focus {
-    outline: none;
-    outline-offset: 0;
-    box-shadow: none;
-  }
-}
-
-.title-bar {
-  align-items: center;
-}
-
-.title-bar-text {
-  display: flex;
-  align-items: center;
-  font-size: $h4;
-  color: $color-white;
-  margin-right: 0;
-
-  .icon {
-    width: 15px;
-    height: 15px;
-    margin-right: 0.5em;
-  }
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &.sm {
-    width: $modal-sm;
+  .infoSlideWrap {
+    width: 100%;
+    margin: 10px 0;
   }
 
-  &.md {
-    width: $modal-md;
-  }
+  .followersModal {
+    position: static;
+    transform: none;
 
-  &.lg {
-    width: $modal-lg;
-  }
+    .profile {
+      width: 100%;
+      min-width: auto;
+    }
 
-  .window-body {
-    margin: 0;
-    padding: 8px;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-
-  .content {
-    &Title {
-      font-size: $h3;
+    .txt {
       text-align: center;
-      margin: 30px 0;
+      margin-top: $h2;
+    }
+
+    strong + p {
+      margin-top: 4px;
+    }
+
+    .comment {
+      width: 100%;
+    }
+  }
+
+  .selectedImgModal {
+    left: initial;
+    left: calc(50% + ($modal-md + 30px));
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    .contentTop {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      font-size: $h3;
+      font-weight: 700;
+    }
+    .divider {
+      margin: 20px 0;
+    }
+    img {
+      max-width: 100%;
     }
   }
 }
@@ -326,6 +179,23 @@ ul {
       top: 8px;
       transform: rotate(180deg);
     }
+  }
+}
+
+.messageWrap {
+  width: 100%;
+  margin-top: 10px;
+
+  p {
+    font-size: $h4;
+    display: block;
+    & + p {
+      margin-top: 5px;
+    }
+  }
+
+  .title {
+    font-weight: 700;
   }
 }
 

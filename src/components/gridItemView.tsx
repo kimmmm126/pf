@@ -8,7 +8,7 @@ interface IItemList {
   src: string;
 }
 
-const imgList: IItemList[] = [
+export const imgList: IItemList[] = [
   {
     idx: 1,
     name: "img1",
@@ -85,11 +85,7 @@ const GridItemView = () => {
         ))}
       </ul>
       {selectedImg && (
-        <Modal
-          title={selectedImg.title}
-          classNames="selectedImgModal md"
-          closeClick={onCloseClick}
-        >
+        <Modal title={selectedImg.title} classNames="selectedImgModal md" closeClick={onCloseClick}>
           {selectedImg.title && (
             <>
               <div className="contentTop">

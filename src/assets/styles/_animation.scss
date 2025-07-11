@@ -1,0 +1,17 @@
+@keyframes pop-ani {
+  0% {
+    scale: 0;
+  }
+  25% {
+    scale: 0.25;
+  }
+  50% {
+    scale: 0.5;
+  }
+  75% {
+    scale: 0.75;
+  }
+  100% {
+    scale: 1;
+  }
+}
