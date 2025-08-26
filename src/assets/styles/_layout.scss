@@ -32,23 +32,74 @@
     }
   }
 
-  .selectedImgModal {
-    left: initial;
-    left: calc(50% + ($modal-md + 30px));
+  .selectedItemModal {
+    font-size: 12px;
+    font-family: "Pixelated MS Sans Serif", "돋움", Arial;
+    left: $modal-md;
     transform: translate(-50%, -50%);
     z-index: 1;
     .contentTop {
       display: flex;
       justify-content: flex-start;
-      gap: 10px;
+      gap: 5px;
       font-size: $h3;
       font-weight: 700;
+    }
+    .contentBody {
+      line-height: 1.8;
     }
     .divider {
       margin: 20px 0;
     }
     img {
       max-width: 100%;
+    }
+  }
+}
+
+.iconWrap {
+  display: inline-block;
+  color: $color-white;
+  font-size: $h5;
+
+  .icon {
+    margin: 10px 5px;
+    text-align: center;
+  }
+
+  .btn {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    &:active {
+      box-shadow: none;
+    }
+
+    .btnImg {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://win98icons.alexmeub.com/icons/png/overlay_shortcut-1.png") left bottom / 32px no-repeat;
+      }
+    }
+    .btnText {
+      display: block;
+      padding-top: 10px;
     }
   }
 }
@@ -268,6 +319,10 @@
       padding-bottom: 100%;
     }
   }
+}
+
+.contWrap {
+  padding: 20px 0;
 }
 
 .noContent {

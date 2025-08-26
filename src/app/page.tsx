@@ -1,6 +1,5 @@
 "use client";
 import { ReactNode, useState } from "react";
-import Link from "next/link";
 
 import InstagramContent from "@/components/instagramContent";
 import Modal from "@/components/modal";
@@ -45,7 +44,7 @@ const INFO_DATA: IInfoData[] = [
   },
   {
     idx: 5,
-    name: "Instagram.exe",
+    name: "Instagram",
     className: "btnInstagram",
     visible: true,
     content: <InstagramContent />,
@@ -71,19 +70,14 @@ const Page = () => {
             {INFO_DATA.map((data) => {
               return (
                 <li key={data.idx} className="icon">
-                  <Link
-                    href="#"
-                    role="button"
-                    className={`btn ${data.className ? data.className : ""}`}
-                    onClick={() => onOpenPopup(data)}
-                  >
+                  <button className={`btn ${data.className ? data.className : ""}`} onClick={() => onOpenPopup(data)}>
                     {data.src && (
                       <div className="btnImg">
                         <img src={data.src} alt={data.name} />
                       </div>
                     )}
                     {data.name && <p className="btnText">{data.name}</p>}
-                  </Link>
+                  </button>
                 </li>
               );
             })}

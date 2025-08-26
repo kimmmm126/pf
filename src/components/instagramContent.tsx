@@ -8,7 +8,8 @@ import { FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import GridItemView, { imgList } from "@/components/gridItemView";
+import GridItemView from "@/components/gridItemView";
+import { itemList } from "data/itemList";
 import Modal from "@/components/modal";
 import Link from "next/link";
 interface IUserData {
@@ -86,7 +87,7 @@ const CONTENT_DATA: IContentData[] = [
 ];
 
 const USER_DATA: IUserData = {
-  posts: imgList.length,
+  posts: itemList.length,
   followers: 11100,
   following: 569,
 };
@@ -149,12 +150,12 @@ const InstagramContent = () => {
   return (
     <>
       <h2 className="contentTitle">@kimmmm126</h2>
-      <div className="divider" />
+      <hr className="divider" />
       <div className="contentTop">
         <div className="profileWrap">
           {profileImage ? (
             <div className="profile">
-              <img src={profileImage} alt="" />
+              <img src={profileImage} alt={profileImage} />
             </div>
           ) : (
             <div className="noImage">
@@ -225,7 +226,7 @@ const InstagramContent = () => {
           </p>
         </div>
       </div>
-      <div className="divider" />
+      <hr className="divider" />
       <div className="contentBottom">
         <div className="menuWrap menuTop">
           {CONTENT_DATA.slice(0, 4).map((item) => (
@@ -237,15 +238,19 @@ const InstagramContent = () => {
         <div className="itemWrap" ref={contentHeightRef}>
           {contentData.content && contentData.type === "move" ? (
             contentData.content
-          ) : contentData.type === "button" ? null : (
+          ) : contentData.type !== "button" ? (
             <div className="noContent" style={{ height: contentHeightRef.current?.clientHeight }}>
               <p className="text">내용이 없습니다.</p>
             </div>
-          )}
+          ) : null}
         </div>
         <div className="menuWrap menuBottom">
           {CONTENT_DATA.slice(4, 8).map((item) => (
-            <button key={item.idx} className={`btn ${item.className}`} onClick={() => onClickMenu(item)}>
+            <button
+              key={item.idx}
+              className={`btn ${item.className}`}
+              onClick={item.type === "move" ? () => onClickMenu(item) : undefined}
+            >
               {item.name}
             </button>
           ))}
