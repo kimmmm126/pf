@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "xp.css/dist/98.css";
-import "@/assets/styles/_common.scss";
+import "@/styles/_common.scss";
 
 export const metadata: Metadata = {
   title: "김가희 포트폴리오",
